@@ -171,6 +171,7 @@ EOF
 #   None
 ##############################################################################
 function install_dependencies() {
+    echo "By pass"
 #   apt update && apt upgrade -y
 #   apt install -y curl
 #   curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
@@ -204,6 +205,7 @@ function install_dependencies() {
 #   None
 ##############################################################################
 function install_databases() {
+    echo "By pass"
  # apt install -y postgresql postgresql-contrib redis-server
 }
 
@@ -217,6 +219,7 @@ function install_databases() {
 #   None
 ##############################################################################
 function install_webserver() {
+    echo "By pass"
   # apt install -y nginx nginx-full ppa:certbot/certbot python3-certbot-nginx
 }
 
