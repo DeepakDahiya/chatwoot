@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Description: Chatwoot installation script
+# Description: DS Support installation script
 # OS: Ubuntu 18.04 LTS
 # Script Version: 0.2
 
@@ -21,7 +21,7 @@ apt install -y \
 
 adduser --disabled-login --gecos "" chatwoot
 
-sudo -i -u chatwoot bash << EOF
+sudo -i -u ds-support bash << EOF
 gpg --keyserver hkp://keyserver.ubuntu.com  --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
 curl -sSL https://get.rvm.io | bash -s stable
 EOF
@@ -29,9 +29,9 @@ EOF
 pg_pass=$(head /dev/urandom | tr -dc A-Za-z0-9 | head -c 15 ; echo '')
 sudo -i -u postgres psql << EOF
 \set pass `echo $pg_pass`
-CREATE USER chatwoot CREATEDB;
-ALTER USER chatwoot PASSWORD :'pass';
-ALTER ROLE chatwoot SUPERUSER;
+CREATE USER ds-support CREATEDB;
+ALTER USER ds-support PASSWORD :'pass';
+ALTER ROLE ds-support SUPERUSER;
 EOF
 
 systemctl enable redis-server.service
@@ -40,7 +40,7 @@ systemctl enable postgresql
 secret=$(head /dev/urandom | tr -dc A-Za-z0-9 | head -c 63 ; echo '')
 RAILS_ENV=production
 
-sudo -i -u chatwoot << EOF
+sudo -i -u ds-support << EOF
 rvm --version
 rvm autolibs disable
 rvm install "ruby-3.0.4"
@@ -77,7 +77,7 @@ cp /home/chatwoot/chatwoot/deployment/chatwoot.target /etc/systemd/system/chatwo
 systemctl enable chatwoot.target
 systemctl start chatwoot.target
 
-echo "Woot! Woot!! Chatwoot server installation is complete"
+echo "Woot! Woot!! DS Support server installation is complete"
 echo "The server will be accessible at http://<server-ip>:3000"
 echo "To configure a domain and SSL certificate, follow the guide at https://www.chatwoot.com/docs/deployment/deploy-chatwoot-in-linux-vm"
 

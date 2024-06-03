@@ -60,7 +60,7 @@ RUN curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | s
    && sudo apt install gh
 
 
-# Do the set up required for chatwoot app
+# Do the set up required for ds-support app
 WORKDIR /workspace
 COPY . /workspace
 

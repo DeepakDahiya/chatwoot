@@ -1,7 +1,7 @@
 {
   "INBOX_MGMT": {
     "HEADER": "Gautų laiškų aplankai",
-    "SIDEBAR_TXT": "<p><b>Gautų laiškų aplankas</b></p> <p> Kai prijungiate svetainė arba Facebook puslapį prie Chatwood, tai vadinama <b>Gautų Laiškų Aplankas</b>. Savo Chatwoot paskyroje galite turėti neribotą gautųjų laiškų aplankų skaičių. </p><p> Spustelėkite <b>Pridėti gautųjų laiškų aplanką</b>, kad susietumėte svetainę arba Facebook puslapį. </p><p> Informacijos suvestinėje galite matyti visus pokalbius iš visų gautųjų laiškų aplankų vienoje vietoje ir atsakyti į juos skirtuke „Pokalbiai“. </p><p> Taip pat galite peržiūrėti pokalbius, susijusius su gautų laiškų aplankais, spustelėję pavadinimą kairėje prietaisų skydelio srityje. </p>",
+    "SIDEBAR_TXT": "<p><b>Gautų laiškų aplankas</b></p> <p> Kai prijungiate svetainė arba Facebook puslapį prie Chatwood, tai vadinama <b>Gautų Laiškų Aplankas</b>. Savo DS Support paskyroje galite turėti neribotą gautųjų laiškų aplankų skaičių. </p><p> Spustelėkite <b>Pridėti gautųjų laiškų aplanką</b>, kad susietumėte svetainę arba Facebook puslapį. </p><p> Informacijos suvestinėje galite matyti visus pokalbius iš visų gautųjų laiškų aplankų vienoje vietoje ir atsakyti į juos skirtuke „Pokalbiai“. </p><p> Taip pat galite peržiūrėti pokalbius, susijusius su gautų laiškų aplankais, spustelėję pavadinimą kairėje prietaisų skydelio srityje. </p>",
     "LIST": {
       "404": "Prie šios paskyros nėra pridėtų gautųjų laiškų aplankų."
     },
@@ -9,7 +9,7 @@
       {
         "title": "Pasirinkti Kanalą",
         "route": "settings_inbox_new",
-        "body": "Pasirinkite paslaugų teikėją, kurį norite integruoti su Chatwoot."
+        "body": "Pasirinkite paslaugų teikėją, kurį norite integruoti su DS Support."
       },
       {
         "title": "Sukurti Gautų Laiškų Aplanką",
@@ -38,7 +38,7 @@
         "PLACEHOLDER": "Įveskite savo internetinio puslapio pavadinimą (pvz.: Acme Inc)"
       },
       "FB": {
-        "HELP": "PS: Po autorizacijos turėsime prieigą tik prie jūsų pranešimų puslapyje. Chatwoot asmeniniai pranešimai nebus pasiekiami.",
+        "HELP": "PS: Po autorizacijos turėsime prieigą tik prie jūsų pranešimų puslapyje. DS Support asmeniniai pranešimai nebus pasiekiami.",
         "CHOOSE_PAGE": "Pasirinkti Puslapį",
         "CHOOSE_PLACEHOLDER": "Psirinkti puslapį iš sąrašo",
         "INBOX_NAME": "Gautų Laiškų Aplanko Pavadinimas",
@@ -340,7 +340,7 @@
       },
       "AUTH": {
         "TITLE": "Pasirinkti Kanalą",
-        "DESC": "Chatwoot palaiko tiesioginio pokalbio valdiklius, Facebook Messenger, Twitter profilius, WhatsApp, el. laiškus ir kt. kaip kanalus. Jei norite sukurti personalizuotą kanalą, galite jį sukurti naudodami API kanalą. Norėdami pradėti, pasirinkite vieną iš toliau pateiktų kanalų."
+        "DESC": "DS Support palaiko tiesioginio pokalbio valdiklius, Facebook Messenger, Twitter profilius, WhatsApp, el. laiškus ir kt. kaip kanalus. Jei norite sukurti personalizuotą kanalą, galite jį sukurti naudodami API kanalą. Norėdami pradėti, pasirinkite vieną iš toliau pateiktų kanalų."
       },
       "AGENTS": {
         "TITLE": "Agentai",
@@ -354,7 +354,7 @@
       },
       "FINISH": {
         "TITLE": "Atlikta!",
-        "DESC": "Sėkmingai užbaigėte savo Facebook puslapio integravimą su Chatwoot. Kai kitą kartą klientas parašys pranešimą jūsų puslapyje, pokalbis automatiškai pasirodys jūsų gautų laiškų aplanke.<br>Taip pat pateikiame valdiklio scenarijų, kurį galite lengvai pridėti prie savo svetainės. Kai tai bus įdiegta jūsų svetainėje, klientai gali jums siųsti pranešimus tiesiai iš jūsų svetainės, nenaudodami jokio išorinio įrankio, o pokalbis bus rodomas Chatwoot.<br>Puiku, ar ne? Na, mes tikrai stengiamės tokiais būti :)"
+        "DESC": "Sėkmingai užbaigėte savo Facebook puslapio integravimą su DS Support. Kai kitą kartą klientas parašys pranešimą jūsų puslapyje, pokalbis automatiškai pasirodys jūsų gautų laiškų aplanke.<br>Taip pat pateikiame valdiklio scenarijų, kurį galite lengvai pridėti prie savo svetainės. Kai tai bus įdiegta jūsų svetainėje, klientai gali jums siųsti pranešimus tiesiai iš jūsų svetainės, nenaudodami jokio išorinio įrankio, o pokalbis bus rodomas DS Support.<br>Puiku, ar ne? Na, mes tikrai stengiamės tokiais būti :)"
       },
       "EMAIL_PROVIDER": {
         "TITLE": "Pasirinkite el. pašto paslaugų teikėją",

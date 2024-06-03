@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Description: Install and manage a Chatwoot installation.
+# Description: Install and manage a DS Support installation.
 # OS: Ubuntu 20.04 LTS
 # Script Version: 2.7.0
 # Run this script as root
@@ -146,12 +146,12 @@ function exit_handler() {
 #   None
 ##############################################################################
 function get_domain_info() {
-  read -rp 'Enter the domain/subdomain for Chatwoot (e.g., chatwoot.domain.com): ' domain_name
+  read -rp 'Enter the domain/subdomain for DS Support (e.g., chatwoot.domain.com): ' domain_name
   read -rp 'Enter an email address for LetsEncrypt to send reminders when your SSL certificate is up for renewal: ' le_email
   cat << EOF
 
 This script will generate SSL certificates via LetsEncrypt and
-serve Chatwoot at https://$domain_name.
+serve DS Support at https://$domain_name.
 Proceed further once you have pointed your DNS to the IP of the instance.
 
 EOF
@@ -221,7 +221,7 @@ function install_webserver() {
 }
 
 ##############################################################################
-# Create chatwoot linux user
+# Create ds-support linux user
 # Globals:
 #   None
 # Arguments:
@@ -250,7 +250,7 @@ function configure_rvm() {
   gpg --keyserver hkp://keyserver.ubuntu.com --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
   gpg2 --keyserver hkp://keyserver.ubuntu.com --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
   curl -sSL https://get.rvm.io | bash -s stable
-  adduser chatwoot rvm
+  adduser ds-support rvm
 }
 
 ##############################################################################
@@ -289,7 +289,7 @@ function get_pgpass() {
 }
 
 ##############################################################################
-# Configure postgres to create chatwoot db user.
+# Configure postgres to create ds-support db user.
 # Enable postgres and redis systemd services.
 # Globals:
 #   None
@@ -303,9 +303,9 @@ function configure_db() {
   get_pgpass
   sudo -i -u postgres psql << EOF
     \set pass `echo $pg_pass`
-    CREATE USER chatwoot CREATEDB;
-    ALTER USER chatwoot PASSWORD :'pass';
-    ALTER ROLE chatwoot SUPERUSER;
+    CREATE USER ds-support CREATEDB;
+    ALTER USER ds-support PASSWORD :'pass';
+    ALTER ROLE ds-support SUPERUSER;
     UPDATE pg_database SET datistemplate = FALSE WHERE datname = 'template1';
     DROP DATABASE template1;
     CREATE DATABASE template1 WITH TEMPLATE = template0 ENCODING = 'UNICODE';
@@ -333,7 +333,7 @@ function setup_chatwoot() {
   local RAILS_ENV=production
   get_pgpass
 
-  sudo -i -u chatwoot << EOF
+  sudo -i -u ds-support << EOF
   rvm --version
   rvm autolibs disable
   rvm install "ruby-3.2.2"
@@ -368,14 +368,14 @@ EOF
 #   None
 ##############################################################################
 function run_db_migrations(){
-  sudo -i -u chatwoot << EOF
+  sudo -i -u ds-support << EOF
   cd chatwoot
   RAILS_ENV=production POSTGRES_STATEMENT_TIMEOUT=600s bundle exec rails db:chatwoot_prepare
 EOF
 }
 
 ##############################################################################
-# Setup Chatwoot systemd services and cwctl CLI
+# Setup DS Support systemd services and cwctl CLI
 # Globals:
 #   None
 # Arguments:
@@ -388,7 +388,7 @@ function configure_systemd_services() {
   cp /home/chatwoot/chatwoot/deployment/chatwoot-worker.1.service /etc/systemd/system/chatwoot-worker.1.service
   cp /home/chatwoot/chatwoot/deployment/chatwoot.target /etc/systemd/system/chatwoot.target
 
-  cp /home/chatwoot/chatwoot/deployment/chatwoot /etc/sudoers.d/chatwoot
+  cp /home/chatwoot/chatwoot/deployment/ds-support /etc/sudoers.d/chatwoot
   cp /home/chatwoot/chatwoot/deployment/setup_20.04.sh /usr/local/bin/cwctl
   chmod +x /usr/local/bin/cwctl
 
@@ -421,7 +421,7 @@ function setup_ssl() {
   sed -i "s/chatwoot.domain.com/$domain_name/g" /etc/nginx/sites-available/nginx_chatwoot.conf
   ln -s /etc/nginx/sites-available/nginx_chatwoot.conf /etc/nginx/sites-enabled/nginx_chatwoot.conf
   systemctl restart nginx
-  sudo -i -u chatwoot << EOF
+  sudo -i -u ds-support << EOF
   cd chatwoot
   sed -i "s/http:\/\/0.0.0.0:3000/https:\/\/$domain_name/g" .env
 EOF
@@ -446,7 +446,7 @@ function ssl_success_message() {
     cat << EOF
 
 ***************************************************************************
-Woot! Woot!! Chatwoot server installation is complete.
+Woot! Woot!! DS Support server installation is complete.
 The server will be accessible at https://$domain_name
 
 Join the community at https://chatwoot.com/community?utm_source=cwctl
@@ -456,7 +456,7 @@ EOF
 }
 
 function cwctl_message() {
-  echo $'\U0001F680 Try out the all new Chatwoot CLI tool to manage your installation.'
+  echo $'\U0001F680 Try out the all new DS Support CLI tool to manage your installation.'
   echo $'\U0001F680 Type "cwctl --help" to learn more.'
 }
 
@@ -489,7 +489,7 @@ function install() {
   cat << EOF
 
 ***************************************************************************
-              Chatwoot Installation (v$CW_VERSION)
+              DS Support Installation (v$CW_VERSION)
 ***************************************************************************
 
 For more verbose logs, open up a second terminal and follow along using,
@@ -535,7 +535,7 @@ EOF
   fi
 
   echo "➥ 6/9 Installing Chatwoot. This takes a long while."
-  setup_chatwoot &>> "${LOG_FILE}"
+  setup_ds-support &>> "${LOG_FILE}"
 
   if [ "$install_pg_redis" != "no" ]; then
     echo "➥ 7/9 Running database migrations."
@@ -555,7 +555,7 @@ EOF
 ➥ 9/9 Skipping SSL/TLS setup.
 
 ***************************************************************************
-Woot! Woot!! Chatwoot server installation is complete.
+Woot! Woot!! DS Support server installation is complete.
 The server will be accessible at http://$public_ip:3000
 
 To configure a domain and SSL certificate, follow the guide at
@@ -603,7 +603,7 @@ exit 0
 #   None
 ##############################################################################
 function get_console() {
-  sudo -i -u chatwoot bash -c " cd chatwoot && RAILS_ENV=production bundle exec rails c"
+  sudo -i -u ds-support bash -c " cd ds-support && RAILS_ENV=production bundle exec rails c"
 }
 
 ##############################################################################
@@ -619,7 +619,7 @@ function help() {
 
   cat <<EOF
 Usage: cwctl [OPTION]...
-Install and manage your Chatwoot installation.
+Install and manage your DS Support installation.
 
 Example: cwctl -i master
 Example: cwctl -l web
@@ -629,15 +629,15 @@ Example: cwctl -c
 
 Installation/Upgrade:
   -i, --install             Install the latest stable version of Chatwoot
-  -I                        Install Chatwoot from a git branch
-  -u, --upgrade             Upgrade Chatwoot to the latest stable version
+  -I                        Install DS Support from a git branch
+  -u, --upgrade             Upgrade DS Support to the latest stable version
   -s, --ssl                 Fetch and install SSL certificates using LetsEncrypt
   -w, --webserver           Install and configure Nginx webserver with SSL
 
 Management:
   -c, --console             Open ruby console
   -l, --logs                View logs from Chatwoot. Supported values include web/worker.
-  -r, --restart             Restart Chatwoot server
+  -r, --restart             Restart DS Support server
 
 Miscellaneous:
   -d, --debug               Show debug messages
@@ -654,7 +654,7 @@ EOF
 }
 
 ##############################################################################
-# Get Chatwoot web/worker logs (-l/--logs)
+# Get DS Support web/worker logs (-l/--logs)
 # Globals:
 #   None
 # Arguments:
@@ -704,7 +704,7 @@ function ssl() {
 #   None
 ##############################################################################
 function upgrade_prereq() {
-  sudo -i -u chatwoot << "EOF"
+  sudo -i -u ds-support << "EOF"
   cd chatwoot
   git update-index --refresh
   git diff-index --quiet HEAD --
@@ -749,7 +749,7 @@ function upgrade_redis() {
     return
   fi
 
-  echo "Upgrading Redis to v7+ for Rails 7 support(Chatwoot v2.17+)"
+  echo "Upgrading Redis to v7+ for Rails 7 support(DS Support v2.17+)"
 
   curl -fsSL https://packages.redis.io/gpg | sudo gpg --dearmor -o /usr/share/keyrings/redis-archive-keyring.gpg
   echo "deb [signed-by=/usr/share/keyrings/redis-archive-keyring.gpg] https://packages.redis.io/deb $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/redis.list
@@ -805,14 +805,14 @@ function upgrade_node() {
 function upgrade() {
   cwctl_upgrade_check
   get_cw_version
-  echo "Upgrading Chatwoot to v$CW_VERSION"
+  echo "Upgrading DS Support to v$CW_VERSION"
   sleep 3
   upgrade_prereq
   upgrade_redis
   upgrade_node
-  sudo -i -u chatwoot << "EOF"
+  sudo -i -u ds-support << "EOF"
 
-  # Navigate to the Chatwoot directory
+  # Navigate to the DS Support directory
   cd chatwoot
 
   # Pull the latest version of the master branch
@@ -841,18 +841,18 @@ EOF
   cp /home/chatwoot/chatwoot/deployment/chatwoot-worker.1.service /etc/systemd/system/chatwoot-worker.1.service
   cp /home/chatwoot/chatwoot/deployment/chatwoot.target /etc/systemd/system/chatwoot.target
 
-  cp /home/chatwoot/chatwoot/deployment/chatwoot /etc/sudoers.d/chatwoot
+  cp /home/chatwoot/chatwoot/deployment/ds-support /etc/sudoers.d/chatwoot
   # TODO:(@vn) handle cwctl updates
 
   systemctl daemon-reload
 
-  # Restart the chatwoot server
+  # Restart the ds-support server
   systemctl restart chatwoot.target
 
 }
 
 ##############################################################################
-# Restart Chatwoot server (-r/--restart)
+# Restart DS Support server (-r/--restart)
 # Globals:
 #   None
 # Arguments:
@@ -925,7 +925,7 @@ function get_installation_identifier() {
 
   local installation_identifier
 
-  installation_identifier=$(sudo -i -u chatwoot << "EOF"
+  installation_identifier=$(sudo -i -u ds-support << "EOF"
   cd chatwoot
   RAILS_ENV=production bundle exec rake instance_id:get_installation_identifier
 EOF

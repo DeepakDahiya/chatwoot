@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe SupportMailbox do
   include ActionMailbox::TestHelper
 
-  describe 'when a chatwoot notification email is received' do
+  describe 'when a ds-support notification email is received' do
     let(:account) { create(:account) }
     let!(:channel_email) { create(:channel_email, email: 'sojan@chatwoot.com', account: account) }
     let(:notification_mail) { create_inbound_email_from_fixture('notification.eml') }
@@ -259,7 +259,7 @@ RSpec.describe SupportMailbox do
 
             We are providing you platform from here you can sell paid posts on your website.
 
-            Chatwoot | CS team | [C](https://d33wubrfki0l68.cloudfront.net/973467c532160fd8b940300a43fa85fa2d060307/dc9a0/static/brand-73f58cdefae282ae74cebfa74c1d7003.svg)
+            DS Support | CS team | [C](https://d33wubrfki0l68.cloudfront.net/973467c532160fd8b940300a43fa85fa2d060307/dc9a0/static/brand-73f58cdefae282ae74cebfa74c1d7003.svg)
 
             Skype: live:.cid.something
 

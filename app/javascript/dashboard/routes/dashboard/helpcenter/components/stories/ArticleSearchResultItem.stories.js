@@ -12,7 +12,7 @@ export default {
     },
     body: {
       defaultValue:
-        'You can integrate your Chatwoot account with multiple conversation channels like website live-chat, email, Facebook page, Twitter handle, WhatsApp, etc. You can view all of your conversations from different channels on one dashboard. This helps in reducing the time and friction involved with switching between multiple tools.',
+        'You can integrate your DS Support account with multiple conversation channels like website live-chat, email, Facebook page, Twitter handle, WhatsApp, etc. You can view all of your conversations from different channels on one dashboard. This helps in reducing the time and friction involved with switching between multiple tools.',
       control: {
         type: 'text',
       },
@@ -48,9 +48,9 @@ const Template = (args, { argTypes }) => ({
 export const ArticleSearchResultItemStory = Template.bind({});
 ArticleSearchResultItemStory.args = {
   title: 'Setup your account',
-  body: `You can integrate your Chatwoot account with multiple conversation channels like website live-chat, email, Facebook page, Twitter handle, WhatsApp, etc. You can view all of your conversations from different channels on one dashboard. This helps in reducing the time and friction involved with switching between multiple tools.
+  body: `You can integrate your DS Support account with multiple conversation channels like website live-chat, email, Facebook page, Twitter handle, WhatsApp, etc. You can view all of your conversations from different channels on one dashboard. This helps in reducing the time and friction involved with switching between multiple tools.
 
-You can manage your conversations and collaborate with your team on the go with Chatwoot mobile apps (available for Android and iOS).
+You can manage your conversations and collaborate with your team on the go with DS Support mobile apps (available for Android and iOS).
 
-In this user guide, we’ve explained the features, capabilities, modes of operation, and step-by-step procedures for easily using the Chatwoot platform.`,
+In this user guide, we’ve explained the features, capabilities, modes of operation, and step-by-step procedures for easily using the DS Support platform.`,
 };

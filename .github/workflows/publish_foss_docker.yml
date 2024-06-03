@@ -1,10 +1,10 @@
 # #
-# # This action will publish Chatwoot CE docker image.
+# # This action will publish DS Support CE docker image.
 # # This is set to run against merges to develop, master
 # # and when tags are created.
 # #
 
-name: Publish Chatwoot CE docker images
+name: Publish DS Support CE docker images
 on:
   push:
     branches:
@@ -34,7 +34,7 @@ jobs:
           rm -rf enterprise
           rm -rf spec/enterprise
 
-      - name: Set Chatwoot edition
+      - name: Set DS Support edition
         run: |
           echo -en '\nENV CW_EDITION="ce"' >> docker/Dockerfile
 

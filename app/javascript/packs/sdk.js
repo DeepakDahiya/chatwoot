@@ -26,7 +26,7 @@ const runSDK = ({ baseUrl, websiteToken }) => {
     locale = window.navigator.language.replace('-', '_');
   }
 
-  window.$chatwoot = {
+  window.$ds-support = {
     baseUrl,
     baseDomain,
     hasLoaded: false,

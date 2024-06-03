@@ -1,4 +1,4 @@
-## Class to generate sample inboxes for a chatwoot test @Account.
+## Class to generate sample inboxes for a ds-support test @Account.
 ############################################################
 ### Usage #####
 #

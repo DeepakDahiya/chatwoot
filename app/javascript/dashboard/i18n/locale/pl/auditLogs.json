@@ -4,11 +4,11 @@
     "HEADER_BTN_TXT": "Dodaj Dzienniki Audytu",
     "LOADING": "Pobieranie Dzienników Audytu",
     "SEARCH_404": "Brak elementów pasujących do tego zapytania",
-    "SIDEBAR_TXT": "<p><b>Dzienniki Audytu</b></p><p>Dzienniki Audytu to ślady działań i zdarzeń w systemie Chatwoot.</p>",
+    "SIDEBAR_TXT": "<p><b>Dzienniki Audytu</b></p><p>Dzienniki Audytu to ślady działań i zdarzeń w systemie DS Support.</p>",
     "LIST": {
       "404": "Brak dostępnych Dzienników Audytu na tym koncie.",
       "TITLE": "Zarządzaj Dziennikami Audytu",
-      "DESC": "Dzienniki Audytu to ślady działań i zdarzeń w systemie Chatwoot.",
+      "DESC": "Dzienniki Audytu to ślady działań i zdarzeń w systemie DS Support.",
       "TABLE_HEADER": [
         "Aktywność",
         "Akcja",

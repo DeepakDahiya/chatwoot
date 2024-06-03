@@ -34,7 +34,7 @@ PortalListItemView.args = {
   selectedLocaleCode: 'en-US',
   portals: [
     {
-      name: 'Chatwoot Help Center',
+      name: 'DS Support Help Center',
       id: 1,
       color: 'red',
       custom_domain: 'help-center.chatwoot.com',
@@ -100,7 +100,7 @@ PortalListItemView.args = {
       ],
     },
     {
-      name: 'Chatwoot Docs',
+      name: 'DS Support Docs',
       id: 2,
       color: 'green',
       custom_domain: 'doc-chatwoot.com',

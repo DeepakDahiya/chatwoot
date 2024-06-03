@@ -1,6 +1,6 @@
-# give chatwoot user permission to start/stop/restart chatwoot systemd service
+# give ds-support user permission to start/stop/restart ds-support systemd service
 
-%chatwoot ALL=NOPASSWD: /bin/systemctl start chatwoot.target
-%chatwoot ALL=NOPASSWD: /bin/systemctl stop chatwoot.target
-%chatwoot ALL=NOPASSWD: /bin/systemctl restart chatwoot.target
-%chatwoot ALL=NOPASSWD: /usr/local/bin/cwctl
+%ds-support ALL=NOPASSWD: /bin/systemctl start chatwoot.target
+%ds-support ALL=NOPASSWD: /bin/systemctl stop chatwoot.target
+%ds-support ALL=NOPASSWD: /bin/systemctl restart chatwoot.target
+%ds-support ALL=NOPASSWD: /usr/local/bin/cwctl

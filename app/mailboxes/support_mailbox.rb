@@ -11,7 +11,7 @@ class SupportMailbox < ApplicationMailbox
 
     # to turn off spam conversation creation
     return unless @account.active?
-    # prevent loop from chatwoot notification emails
+    # prevent loop from ds-support notification emails
     return if notification_email_from_chatwoot?
 
     # return if email doesn't have a valid sender

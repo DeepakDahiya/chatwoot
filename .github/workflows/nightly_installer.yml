@@ -2,7 +2,7 @@
 # #
 # # Linux nightly installer action
 # # This action will try to install and setup
-# # chatwoot on an Ubuntu 20.04 machine using
+# # ds-support on an Ubuntu 20.04 machine using
 # # the linux installer script.
 # #
 # # This is set to run daily at midnight.
@@ -44,7 +44,7 @@ jobs:
         #        sudo systemctl restart chatwoot.target
         #        curl http://localhost:3000/api
 
-    - name: Upload chatwoot setup log file as an artifact
+    - name: Upload ds-support setup log file as an artifact
       uses: actions/upload-artifact@v4
       if: always()
       with:
