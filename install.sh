@@ -171,6 +171,7 @@ EOF
 #   None
 ##############################################################################
 function install_dependencies() {
+: <<'END_COMMENT'
   apt update && apt upgrade -y
   apt install -y curl
   curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
@@ -192,6 +193,7 @@ function install_dependencies() {
       nodejs yarn patch ruby-dev zlib1g-dev liblzma-dev \
       libgmp-dev libncurses5-dev libffi-dev libgdbm6 libgdbm-dev sudo \
       libvips python3-pip
+END_COMMENT
 }
 
 ##############################################################################
@@ -204,7 +206,7 @@ function install_dependencies() {
 #   None
 ##############################################################################
 function install_databases() {
-  apt install -y postgresql postgresql-contrib redis-server
+ # apt install -y postgresql postgresql-contrib redis-server
 }
 
 ##############################################################################
@@ -217,7 +219,7 @@ function install_databases() {
 #   None
 ##############################################################################
 function install_webserver() {
-  apt install -y nginx nginx-full certbot python3-certbot-nginx
+  # apt install -y nginx nginx-full ppa:certbot/certbot python3-certbot-nginx
 }
 
 ##############################################################################
