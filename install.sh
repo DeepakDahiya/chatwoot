@@ -171,28 +171,27 @@ EOF
 #   None
 ##############################################################################
 function install_dependencies() {
-    echo "By pass"
-#   apt update && apt upgrade -y
-#   apt install -y curl
-#   curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
-#   echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
-#   curl -fsSL https://packages.redis.io/gpg | sudo gpg --dearmor -o /usr/share/keyrings/redis-archive-keyring.gpg
-#   echo "deb [signed-by=/usr/share/keyrings/redis-archive-keyring.gpg] https://packages.redis.io/deb $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/redis.list
-#   mkdir -p /etc/apt/keyrings
-#   curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg
-#   NODE_MAJOR=20
-#   echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_$NODE_MAJOR.x nodistro main" | sudo tee /etc/apt/sources.list.d/nodesource.list
+  apt update && apt upgrade -y
+  apt install -y curl
+  curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+  echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+  curl -fsSL https://packages.redis.io/gpg | sudo gpg --dearmor -o /usr/share/keyrings/redis-archive-keyring.gpg
+  echo "deb [signed-by=/usr/share/keyrings/redis-archive-keyring.gpg] https://packages.redis.io/deb $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/redis.list
+  mkdir -p /etc/apt/keyrings
+  curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg
+  NODE_MAJOR=20
+  echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_$NODE_MAJOR.x nodistro main" | sudo tee /etc/apt/sources.list.d/nodesource.list
 
-#   apt update
+  apt update
 
-#   apt install -y \
-#       git software-properties-common ca-certificates imagemagick libpq-dev \
-#       libxml2-dev libxslt1-dev file g++ gcc autoconf build-essential \
-#       libssl-dev libyaml-dev libreadline-dev gnupg2 \
-#       postgresql-client redis-tools \
-#       nodejs yarn patch ruby-dev zlib1g-dev liblzma-dev \
-#       libgmp-dev libncurses5-dev libffi-dev libgdbm6 libgdbm-dev sudo \
-#       libvips python3-pip
+  apt install -y \
+      git software-properties-common ca-certificates imagemagick libpq-dev \
+      libxml2-dev libxslt1-dev file g++ gcc autoconf build-essential \
+      libssl-dev libyaml-dev libreadline-dev gnupg2 \
+      postgresql-client redis-tools \
+      nodejs yarn patch ruby-dev zlib1g-dev liblzma-dev \
+      libgmp-dev libncurses5-dev libffi-dev libgdbm6 libgdbm-dev sudo \
+      libvips python3-pip
 }
 
 ##############################################################################
@@ -205,8 +204,7 @@ function install_dependencies() {
 #   None
 ##############################################################################
 function install_databases() {
-    echo "By pass"
- # apt install -y postgresql postgresql-contrib redis-server
+  apt install -y postgresql postgresql-contrib redis-server
 }
 
 ##############################################################################
@@ -219,8 +217,7 @@ function install_databases() {
 #   None
 ##############################################################################
 function install_webserver() {
-    echo "By pass"
-  # apt install -y nginx nginx-full ppa:certbot/certbot python3-certbot-nginx
+  apt install -y nginx nginx-full python3-certbot-nginx
 }
 
 ##############################################################################
@@ -511,7 +508,7 @@ EOF
   read -rp 'Would you like to install Postgres and Redis? (Answer no if you plan to use external services): ' install_pg_redis
 
   echo -en "\n➥ 1/9 Installing dependencies. This takes a while.\n"
-  install_dependencies &>> "${LOG_FILE}"
+#   install_dependencies &>> "${LOG_FILE}"
 
   if [ "$install_pg_redis" != "no" ]; then
     echo "➥ 2/9 Installing databases."
